@@ -1,0 +1,127 @@
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
+
+/* 
+// import React, { useState, useRef } from 'react';
+// import { AgGridReact } from 'ag-grid-react';
+
+// import 'ag-grid-community/styles/ag-grid.css';
+// import 'ag-grid-community/styles/ag-theme-alpine.css';
+
+// // Module registration (required from AG Grid v29+)
+// import { ModuleRegistry } from 'ag-grid-community';
+// import { ClientSideRowModelModule } from 'ag-grid-community';
+// ModuleRegistry.registerModules([ClientSideRowModelModule]);
+
+// const App = () => {
+//   const [rowData, setRowData] = useState([
+//     { name: "abcd", age: 25, carbrand: "BMW", carmodel: "M5", income: 120000, isElectric: true },
+//   ]);
+
+//   const [showModal, setShowModal] = useState(false);
+//   const [formData, setFormData] = useState({
+//     name: '',
+//     age: '',
+//     carbrand: '',
+//     carmodel: '',
+//     income: '',
+//     isElectric: false
+//   });
+
+//   const gridRef = useRef();
+
+//   const columnDefs = [
+//     { field: 'name' },
+//     { field: 'age' },
+//     { field: 'carbrand' },
+//     { field: 'carmodel' },
+//     { field: 'income' },
+//     { field: 'isElectric', headerName: 'Electric Car' },
+//   ];
+
+//   const handleAddRow = () => {
+//     setRowData([...rowData, formData]);
+//     setFormData({ name: '', age: '', carbrand: '', carmodel: '', income: '', isElectric: false });
+//     setShowModal(false);
+//   };
+
+//   const handleClear = () => {
+//     setFormData({ name: '', age: '', carbrand: '', carmodel: '', income: '', isElectric: false });
+//   };
+
+//   const handleCancel = () => {
+//     setShowModal(false);
+//   };
+
+//   return (
+//     <div style={{ margin: '20px' }}>
+//       <h2>AG Grid with CRUD (Add Row)</h2>
+//       <button onClick={() => setShowModal(true)} style={{ marginBottom: '10px' }}>
+//         Add Row
+//       </button>
+
+//       <div className="ag-theme-alpine" style={{ height: 400, width: '100%' }}>
+//         <AgGridReact
+//           ref={gridRef}
+//           rowData={rowData}
+//           columnDefs={columnDefs}
+//         />
+//       </div>
+
+//       {showModal && (
+//         <div style={modalStyle}>
+//           <div style={modalContentStyle}>
+//             <h3>Add New Entry</h3>
+//             <form>
+//               <label>Name: <input value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} /></label><br />
+//               <label>Age: <input type="number" value={formData.age} onChange={e => setFormData({ ...formData, age: e.target.value })} /></label><br />
+//               <label>Car Brand: <input value={formData.carbrand} onChange={e => setFormData({ ...formData, carbrand: e.target.value })} /></label><br />
+//               <label>Car Model: <input value={formData.carmodel} onChange={e => setFormData({ ...formData, carmodel: e.target.value })} /></label><br />
+//               <label>Income: <input type="number" value={formData.income} onChange={e => setFormData({ ...formData, income: e.target.value })} /></label><br />
+//               <label>
+//                 Electric: 
+//                 <input type="checkbox" checked={formData.isElectric} onChange={e => setFormData({ ...formData, isElectric: e.target.checked })} />
+//               </label><br /><br />
+//               <button type="button" onClick={handleAddRow}>Save</button>
+//               <button type="button" onClick={handleClear} style={{ marginLeft: '10px' }}>Clear</button>
+//               <button type="button" onClick={handleCancel} style={{ marginLeft: '10px' }}>Cancel</button>
+//             </form>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default App;
+
+// // Basic Modal Styling
+// const modalStyle = {
+//   position: 'fixed',
+//   top: 0, left: 0, right: 0, bottom: 0,
+//   backgroundColor: 'rgba(0, 0, 0, 0.5)',
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   zIndex: 999
+// };
+
+// const modalContentStyle = {
+//   backgroundColor: 'white',
+//   padding: '20px',
+//   borderRadius: '5px',
+//   width: '300px'
+// };
+ */
+

@@ -1,0 +1,415 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+
+/* // import React, { useState } from "react";
+
+// export default function App() {
+//   const [parentIdCounter, setParentIdCounter] = useState(1);
+//   const [childIdCounter, setChildIdCounter] = useState(1);
+
+//   const [formData, setFormData] = useState({
+//     parentname: "",
+//     parentage: "",
+//     isChild: false,
+//     children: []
+//   });
+
+//   const [entries, setEntries] = useState([]);
+
+//   // Handle parent input
+//   const handleChange = (e) => {
+//     const { name, value, type, checked } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: type === "checkbox" ? checked : value
+//     });
+//   };
+
+//   // Handle child input change
+//   const handleChildChange = (index, e) => {
+//     const updatedChildren = [...formData.children];
+//     updatedChildren[index][e.target.name] = e.target.value;
+//     setFormData({ ...formData, children: updatedChildren });
+//   };
+
+//   // Add new child input
+//   const addChild = () => {
+//     const newChild = {
+//       childId: childIdCounter,
+//       childname: "",
+//       childAge: ""
+//     };
+//     setChildIdCounter(childIdCounter + 1);
+//     setFormData({ ...formData, children: [...formData.children, newChild] });
+//   };
+
+//   // Delete a specific child input
+//   const deleteChild = (index) => {
+//     const updatedChildren = [...formData.children];
+//     updatedChildren.splice(index, 1);
+//     setFormData({ ...formData, children: updatedChildren });
+//   };
+
+//   // Submit form
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     const newParent = {
+//       parentid: parentIdCounter,
+//       parentname: formData.parentname,
+//       parentage: formData.parentage,
+//       isChild: formData.isChild,
+//       children: formData.isChild ? formData.children : []
+//     };
+
+//     setParentIdCounter(parentIdCounter + 1);
+//     setEntries([...entries, newParent]);
+
+//     // Reset form
+//     setFormData({
+//       parentname: "",
+//       parentage: "",
+//       isChild: false,
+//       children: []
+//     });
+//   };
+
+//   // Delete parent entry
+//   const deleteParent = (id) => {
+//     const updatedEntries = entries.filter((entry) => entry.parentid !== id);
+//     setEntries(updatedEntries);
+//   };
+
+//   return (
+//     <div style={{ padding: "20px", fontFamily: "Arial" }}>
+//       <h2>Parent-Child Entry Form</h2>
+//       <form onSubmit={handleSubmit}>
+//         <div>
+//           <label>Parent Name: </label>
+//           <input
+//             name="parentname"
+//             value={formData.parentname}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+//         <div>
+//           <label>Parent Age: </label>
+//           <input
+//             name="parentage"
+//             value={formData.parentage}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+//         <div>
+//           <label>Has Child?</label>
+//           <input
+//             type="checkbox"
+//             name="isChild"
+//             checked={formData.isChild}
+//             onChange={handleChange}
+//           />
+//         </div>
+
+//         {formData.isChild &&
+//           formData.children.map((child, index) => (
+//             <div key={child.childId} style={{ marginLeft: "20px" }}>
+//               <p>Child #{index + 1}</p>
+//               <input
+//                 name="childname"
+//                 placeholder="Child Name"
+//                 value={child.childname}
+//                 onChange={(e) => handleChildChange(index, e)}
+//                 required
+//               />
+//               <input
+//                 name="childAge"
+//                 placeholder="Child Age"
+//                 value={child.childAge}
+//                 onChange={(e) => handleChildChange(index, e)}
+//                 required
+//               />
+//               <button type="button" onClick={() => deleteChild(index)}>
+//                 Delete Child
+//               </button>
+//             </div>
+//           ))}
+
+//         {formData.isChild && (
+//           <button type="button" onClick={addChild}>
+//             + Add Child
+//           </button>
+//         )}
+
+//         <div style={{ marginTop: "10px" }}>
+//           <button type="submit">Submit Entry</button>
+//         </div>
+//       </form>
+
+//       <hr />
+
+//       <h3>Submitted Entries</h3>
+//       {entries.map((entry) => (
+//         <div key={entry.parentid} style={{ marginBottom: "20px" }}>
+//           <p>
+//             <strong>Parent ID:</strong> {entry.parentid} <br />
+//             <strong>Name:</strong> {entry.parentname} <br />
+//             <strong>Age:</strong> {entry.parentage} <br />
+//             <strong>Has Child:</strong> {entry.isChild ? "Yes" : "No"}{" "}
+//             <button onClick={() => deleteParent(entry.parentid)}>Delete</button>
+//           </p>
+//           {entry.isChild && entry.children.length > 0 && (
+//             <table border="1" cellPadding="5">
+//               <thead>
+//                 <tr>
+//                   <th>Child ID</th>
+//                   <th>Child Name</th>
+//                   <th>Child Age</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 {entry.children.map((child) => (
+//                   <tr key={child.childId}>
+//                     <td>{child.childId}</td>
+//                     <td>{child.childname}</td>
+//                     <td>{child.childAge}</td>
+//                   </tr>
+//                 ))}
+//               </tbody>
+//             </table>
+//           )}
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+import React, { useState } from "react";
+
+export default function ParentChildForm() {
+  const [parentIdCounter, setParentIdCounter] = useState(1);
+  const [childIdCounter, setChildIdCounter] = useState(1);
+
+  const [formData, setFormData] = useState({
+    parentname: "",
+    parentage: "",
+    isChild: false,
+    children: [],
+  });
+
+  const [entries, setEntries] = useState([]);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleChildChange = (index, e) => {
+    const updatedChildren = [...formData.children];
+    updatedChildren[index][e.target.name] = e.target.value;
+    setFormData({ ...formData, children: updatedChildren });
+  };
+
+  const addChild = () => {
+    const newChild = {
+      childId: childIdCounter,
+      childname: "",
+      childAge: "",
+    };
+    setChildIdCounter(childIdCounter + 1);
+    setFormData({ ...formData, children: [...formData.children, newChild] });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newParent = {
+      parentid: parentIdCounter,
+      parentname: formData.parentname,
+      parentage: formData.parentage,
+      isChild: formData.isChild,
+      children: formData.isChild ? formData.children : [],
+    };
+
+    setParentIdCounter(parentIdCounter + 1);
+    setEntries([...entries, newParent]);
+
+    setFormData({
+      parentname: "",
+      parentage: "",
+      isChild: false,
+      children: [],
+    });
+  };
+
+  const deleteParent = (id) => {
+    const updatedEntries = entries.filter((entry) => entry.parentid !== id);
+    setEntries(updatedEntries);
+  };
+
+  const deleteChildFromEntry = (parentId, childId) => {
+    const updatedEntries = entries.map((entry) => {
+      if (entry.parentid === parentId) {
+        const updatedChildren = entry.children.filter(
+          (child) => child.childId !== childId
+        );
+        return { ...entry, children: updatedChildren };
+      }
+      return entry;
+    });
+    setEntries(updatedEntries);
+  };
+
+  return (
+    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+      <h2>Parent-Child Entry Form</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Parent Name: </label>
+          <input
+            name="parentname"
+            value={formData.parentname}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Parent Age: </label>
+          <input
+            name="parentage"
+            value={formData.parentage}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Has Child? </label>
+          <input
+            type="checkbox"
+            name="isChild"
+            checked={formData.isChild}
+            onChange={handleChange}
+          />
+        </div>
+
+        {formData.isChild &&
+          formData.children.map((child, index) => (
+            <div key={child.childId} style={{ marginLeft: "20px" }}>
+              <p>Child #{index + 1}</p>
+              <input
+                name="childname"
+                placeholder="Child Name"
+                value={child.childname}
+                onChange={(e) => handleChildChange(index, e)}
+                required
+              />
+              <input
+                name="childAge"
+                placeholder="Child Age"
+                value={child.childAge}
+                onChange={(e) => handleChildChange(index, e)}
+                required
+              />
+            </div>
+          ))}
+
+        {formData.isChild && (
+          <button type="button" onClick={addChild}>
+            + Add Child
+          </button>
+        )}
+
+        <div style={{ marginTop: "10px" }}>
+          <button type="submit">Submit Entry</button>
+        </div>
+      </form>
+
+      <hr />
+
+      <h3>Submitted Entries</h3>
+      {entries.map((entry) => (
+        <div key={entry.parentid} style={{ marginBottom: "20px" }}>
+          <p>
+            <strong>Parent ID:</strong> {entry.parentid} <br />
+            <strong>Name:</strong> {entry.parentname} <br />
+            <strong>Age:</strong> {entry.parentage} <br />
+            <strong>Has Child:</strong> {entry.isChild ? "Yes" : "No"}{" "}
+            <button onClick={() => deleteParent(entry.parentid)}>Delete</button>
+          </p>
+
+          {entry.isChild && entry.children.length > 0 && (
+            <table border="1" cellPadding="5">
+              <thead>
+                <tr>
+                  <th>Child ID</th>
+                  <th>Child Name</th>
+                  <th>Child Age</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {entry.children.map((child) => (
+                  <tr key={child.childId}>
+                    <td>{child.childId}</td>
+                    <td>{child.childname}</td>
+                    <td>{child.childAge}</td>
+                    <td>
+                      <button
+                        onClick={() =>
+                          deleteChildFromEntry(entry.parentid, child.childId)
+                        }
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+} */
